@@ -263,7 +263,14 @@ SCAN:
 					}
 				default:
 					{
-						return nil, errors.New(fmt.Sprintf("Unknown rune: %v", nextRune))
+						if int32(nextRune) > 5000 {
+							tokenType = TOKEN_WORD
+							value = append(value, nextRune)
+							state = STATE_INWORD
+						} else {
+							return nil, errors.New(fmt.Sprintf("Unknown rune: %v", nextRune))
+						}
+
 					}
 				}
 			}
@@ -297,7 +304,11 @@ SCAN:
 					}
 				default:
 					{
-						return nil, errors.New(fmt.Sprintf("Uknown rune: %v", nextRune))
+						if int32(nextRune) > 5000 {
+							value = append(value, nextRune)
+						} else {
+							return nil, errors.New(fmt.Sprintf("Uknown rune: %v", nextRune))
+						}
 					}
 				}
 			}
@@ -316,7 +327,12 @@ SCAN:
 					}
 				default:
 					{
-						return nil, errors.New(fmt.Sprintf("Uknown rune: %v", nextRune))
+						if int32(nextRune) > 5000 {
+							state = STATE_INWORD
+							value = append(value, nextRune)
+						} else {
+							return nil, errors.New(fmt.Sprintf("Uknown rune: %v", nextRune))
+						}
 					}
 				}
 			}
@@ -335,7 +351,9 @@ SCAN:
 					}
 				default:
 					{
-						return nil, errors.New(fmt.Sprintf("Uknown rune: %v", nextRune))
+						if int32(nextRune) > 5000 {
+							return nil, errors.New(fmt.Sprintf("Uknown rune: %v", nextRune))
+						}
 					}
 				}
 			}
@@ -361,7 +379,11 @@ SCAN:
 					}
 				default:
 					{
-						return nil, errors.New(fmt.Sprintf("Uknown rune: %v", nextRune))
+						if int32(nextRune) > 5000 {
+							value = append(value, nextRune)
+						} else {
+							return nil, errors.New(fmt.Sprintf("Uknown rune: %v", nextRune))
+						}
 					}
 				}
 			}
@@ -383,7 +405,11 @@ SCAN:
 					}
 				default:
 					{
-						return nil, errors.New(fmt.Sprintf("Uknown rune: %v", nextRune))
+						if int32(nextRune) > 5000 {
+							value = append(value, nextRune)
+						} else {
+							return nil, errors.New(fmt.Sprintf("Uknown rune: %v", nextRune))
+						}
 					}
 				}
 			}
@@ -409,7 +435,11 @@ SCAN:
 					}
 				default:
 					{
-						return nil, errors.New(fmt.Sprintf("Uknown rune: %v", nextRune))
+						if int32(nextRune) > 5000 {
+							value = append(value, nextRune)
+						} else {
+							return nil, errors.New(fmt.Sprintf("Uknown rune: %v", nextRune))
+						}
 					}
 				}
 			}
